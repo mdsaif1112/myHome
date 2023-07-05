@@ -8,10 +8,10 @@ import axios from 'axios';
 import React from 'react';
 
 
-// export const getProperties = async () => {
-//     const res = await axios('http://localhost:3000/api/latestProperties')
-//     return res.data
-// }
+export const getProperties = async () => {
+    const res = await axios('https://my-home-khaki-two.vercel.app/api/latestProperties')
+    return res.data
+}
 
 const LatestProperties = async () => {
 
