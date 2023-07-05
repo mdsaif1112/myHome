@@ -46,14 +46,13 @@ const Register = () => {
                         axios.post('http://localhost:3000/api/users', { name, email, userType })
                             .then(res => {
                                 if (res?.data?.insertedId) {
+                                    reset()
+                                    setRegisterOpen(false)
                                     Swal.fire({
                                         title: 'YAY!',
                                         text: 'Registered Successfully.',
                                         icon: 'success',
                                         confirmButtonText: 'Cool'
-                                    }).then(() => {
-                                        reset()
-                                        setRegisterOpen(false)
                                     })
                                 }
                             })

@@ -12,10 +12,10 @@ export const POST = async (req) => {
   const exist = await userCollection.findOne(data);
 
   if (exist) {
-    return;
+    return NextResponse.json({ exist: true });
   }
 
-  const result = await userCollection.insertOne(data)
+  const result = await userCollection.insertOne(data);
 
   return NextResponse.json(result);
 };

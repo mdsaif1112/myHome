@@ -1,5 +1,6 @@
 import { AuthContext } from '@/providers/AuthProvider';
 import { LoginContext } from '@/providers/LoginProvider';
+import axios from 'axios';
 import React, { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import Swal from 'sweetalert2';
@@ -12,15 +13,23 @@ const SocialLogin = ({ className }) => {
     const handleGoogleLogin = () => {
         googleLogin()
             .then(res => {
-                setOpen(false)
-                setRegisterOpen(false)
+                axios.post('http://localhost:3000/api/users', { name: res.user.displayName, email: res.user.email, userType: 'buyer' })
+                    .then(res => {
+                        console.log(res?.data);
+                        if (res?.data?.insertedId || res?.data?.exist) {
+                            setOpen(false)
+                            setRegisterOpen(false)
 
-                Swal.fire({
-                    title: 'YAY!',
-                    text: 'Logged In Successfully.',
-                    icon: 'success',
-                    confirmButtonText: 'Cool'
-                })
+                            console.log(res?.data);
+
+                            Swal.fire({
+                                title: 'YAY!',
+                                text: 'Logged In Successfully.',
+                                icon: 'success',
+                                confirmButtonText: 'Cool'
+                            })
+                        }
+                    })
             })
             .catch(error => {
                 console.log(error);
