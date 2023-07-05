@@ -16,24 +16,24 @@ const SingleProperty = ({ property }) => {
 
     const [favorite, setFavorite] = useState(false)
 
-    useEffect(() => {
-        if (user) {
-            const query = {
-                propertyId: _id,
-                buyerEmail: user?.email
-            }
+    // useEffect(() => {
+    //     if (user) {
+    //         const query = {
+    //             propertyId: _id,
+    //             buyerEmail: user?.email
+    //         }
 
-            axios('http://localhost:3000/api/favorites', {
-                params: query
-            })
-                .then(res => {
-                    if (res?.data?.propertyId === _id) {
-                        setFavorite(true)
-                    }
-                })
-        }
+    //         axios('http://localhost:3000/api/favorites', {
+    //             params: query
+    //         })
+    //             .then(res => {
+    //                 if (res?.data?.propertyId === _id) {
+    //                     setFavorite(true)
+    //                 }
+    //             })
+    //     }
 
-    }, [user, _id])
+    // }, [user, _id])
 
 
     // TODO: Need to make it dynamic
@@ -49,56 +49,56 @@ const SingleProperty = ({ property }) => {
 
     const addToFavorites = async (id) => {
 
-        if (!user?.email) {
-            return
-        }
+        // if (!user?.email) {
+        //     return
+        // }
 
-        const favoriteProperty = {
-            propertyId: id,
-            buyerEmail: user?.email
-        }
+        // const favoriteProperty = {
+        //     propertyId: id,
+        //     buyerEmail: user?.email
+        // }
 
-        const res = await axios.post('http://localhost:3000/api/favorites', favoriteProperty)
-        const data = await res.data
+        // const res = await axios.post('http://localhost:3000/api/favorites', favoriteProperty)
+        // const data = await res.data
 
-        if (data.insertedId) {
-            Swal.fire({
-                title: 'YAY!',
-                text: 'Added Successfully.',
-                icon: 'success',
-                confirmButtonText: 'Cool'
-            })
-                .then(() => {
-                    setFavorite(true)
-                })
-        }
+        // if (data.insertedId) {
+        //     Swal.fire({
+        //         title: 'YAY!',
+        //         text: 'Added Successfully.',
+        //         icon: 'success',
+        //         confirmButtonText: 'Cool'
+        //     })
+        //         .then(() => {
+        //             setFavorite(true)
+        //         })
+        // }
 
 
     }
 
     const DeleteFromFavorites = async (id) => {
-        const favoriteProperty = {
-            propertyId: id,
-            buyerEmail: user?.email
-        }
+        // const favoriteProperty = {
+        //     propertyId: id,
+        //     buyerEmail: user?.email
+        // }
 
-        const res = await axios.delete('http://localhost:3000/api/favorites', {
-            params: favoriteProperty
-        })
-        const data = await res.data
+        // const res = await axios.delete('http://localhost:3000/api/favorites', {
+        //     params: favoriteProperty
+        // })
+        // const data = await res.data
 
-        if (data.deletedCount) {
-            Swal.fire({
-                title: 'Done!',
-                text: 'Removed From favorites Successfully.',
-                icon: 'success',
-                confirmButtonText: 'Cool'
-            })
-                .then(() => {
-                    setFavorite(false)
-                    console.log('false');
-                })
-        }
+        // if (data.deletedCount) {
+        //     Swal.fire({
+        //         title: 'Done!',
+        //         text: 'Removed From favorites Successfully.',
+        //         icon: 'success',
+        //         confirmButtonText: 'Cool'
+        //     })
+        //         .then(() => {
+        //             setFavorite(false)
+        //             console.log('false');
+        //         })
+        // }
     }
 
     return (
