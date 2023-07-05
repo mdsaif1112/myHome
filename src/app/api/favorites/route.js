@@ -42,7 +42,7 @@ export const POST = async (req) => {
   return NextResponse.json(result);
 };
 
-export const DELETE = async () => {
+export const DELETE = async (req) => {
   const client = await connectDb();
 
   const favoriteCollection = client.collection("favorites");
@@ -51,6 +51,8 @@ export const DELETE = async () => {
 
   const propertyId = searchParams.get("propertyId");
   const buyerEmail = searchParams.get("buyerEmail");
+
+  console.log(propertyId, buyerEmail);
 
   const query = {
     propertyId,

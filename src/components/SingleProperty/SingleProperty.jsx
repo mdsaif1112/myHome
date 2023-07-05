@@ -85,6 +85,7 @@ const SingleProperty = ({ property }) => {
         const res = await axios.delete('https://my-home-khaki-two.vercel.app/api/favorites', {
             params: favoriteProperty
         })
+        
         const data = await res.data
 
         if (data.deletedCount) {
