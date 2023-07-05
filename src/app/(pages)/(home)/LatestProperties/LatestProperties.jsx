@@ -17,9 +17,7 @@ const LatestProperties = async () => {
 
     // const { properties, refetch } = useLatestProperties()
 
-    // const properties = await getProperties()
-
-    const properties = []
+    const properties = await getProperties()
 
     return (
         <section className='section'>
