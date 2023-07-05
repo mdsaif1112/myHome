@@ -97,7 +97,6 @@ const SingleProperty = ({ property }) => {
             })
                 .then(() => {
                     setFavorite(false)
-                    console.log('false');
                 })
         }
     }

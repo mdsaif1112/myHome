@@ -8,6 +8,7 @@ import { LoginContext } from '@/providers/LoginProvider';
 import Swal from 'sweetalert2';
 import { Photo } from '@mui/icons-material';
 import { FaTimes } from 'react-icons/fa';
+import axios from 'axios';
 
 const Register = () => {
 
@@ -35,20 +36,27 @@ const Register = () => {
         const photo = data.photo
         const email = data.email
         const password = data.password
+        const userType = data.userType
 
         signUpWithEmail(email, password)
             .then(res => {
 
                 updateNameAndPhoto(res.user, name, photo)
                     .then(() => {
-                        reset()
-                        setRegisterOpen(false)
-                        Swal.fire({
-                            title: 'YAY!',
-                            text: 'Registered Successfully.',
-                            icon: 'success',
-                            confirmButtonText: 'Cool'
-                        })
+                        axios.post('http://localhost:3000/api/users', { name, email, userType })
+                            .then(res => {
+                                if (res?.data?.insertedId) {
+                                    Swal.fire({
+                                        title: 'YAY!',
+                                        text: 'Registered Successfully.',
+                                        icon: 'success',
+                                        confirmButtonText: 'Cool'
+                                    }).then(() => {
+                                        reset()
+                                        setRegisterOpen(false)
+                                    })
+                                }
+                            })
                     })
             })
             .catch(error => console.log(error))
