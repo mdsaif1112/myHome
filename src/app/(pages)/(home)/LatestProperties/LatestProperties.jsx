@@ -9,7 +9,7 @@ import React from 'react';
 
 
 export const getProperties = async () => {
-    const res = await axios('https://my-home-eta.vercel.app/api/latestProperties')
+    const res = await axios('http://localhost:3000/api/latestProperties')
     return res.data
 }
 

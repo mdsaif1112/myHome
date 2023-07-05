@@ -23,7 +23,7 @@ const SingleProperty = ({ property }) => {
                 buyerEmail: user?.email
             }
 
-            axios('https://my-home-eta.vercel.app/api/favorites', {
+            axios('http://localhost:3000/api/favorites', {
                 params: query
             })
                 .then(res => {
@@ -58,7 +58,7 @@ const SingleProperty = ({ property }) => {
             buyerEmail: user?.email
         }
 
-        const res = await axios.post('https://my-home-eta.vercel.app/api/favorites', favoriteProperty)
+        const res = await axios.post('http://localhost:3000/api/favorites', favoriteProperty)
         const data = await res.data
 
         if (data.insertedId) {
@@ -82,7 +82,7 @@ const SingleProperty = ({ property }) => {
             buyerEmail: user?.email
         }
 
-        const res = await axios.delete('https://my-home-eta.vercel.app/api/favorites', {
+        const res = await axios.delete('http://localhost:3000/api/favorites', {
             params: favoriteProperty
         })
         const data = await res.data
