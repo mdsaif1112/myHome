@@ -1,5 +1,6 @@
 import theme from '@/app/theme';
 import { AuthContext } from '@/providers/AuthProvider';
+import { LoginContext } from '@/providers/LoginProvider';
 import { Box, Button, Card, CardActions, CardContent, CardMedia, Container, Divider, Typography } from '@mui/material';
 import axios from 'axios';
 import Image from 'next/image';
@@ -9,6 +10,8 @@ import { FaBath, FaBed, FaExpand, FaHeart, FaMapMarkerAlt, FaRegHeart } from 're
 import Swal from 'sweetalert2';
 
 const SingleProperty = ({ property }) => {
+
+    const { setOpen } = useContext(LoginContext)
 
     const { _id, photos, title, price, description, bedrooms, bathrooms, property_size, featured, listed_in, status, address } = property
 
@@ -50,6 +53,7 @@ const SingleProperty = ({ property }) => {
     const addToFavorites = async (id) => {
 
         if (!user?.email) {
+            setOpen(true)
             return
         }
 
@@ -85,7 +89,7 @@ const SingleProperty = ({ property }) => {
         const res = await axios.delete('api/favorites', {
             params: favoriteProperty
         })
-        
+
         const data = await res.data
 
         if (data.deletedCount) {

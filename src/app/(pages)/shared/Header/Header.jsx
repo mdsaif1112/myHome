@@ -14,10 +14,11 @@ import Register from '../../(register)/Register';
 import { LoginContext } from '@/providers/LoginProvider';
 import { AuthContext } from '@/providers/AuthProvider';
 import { usePathname } from 'next/navigation';
+import Swal from 'sweetalert2';
 
 const Header = () => {
 
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
 
     const { setOpen } = useContext(LoginContext)
 
@@ -97,6 +98,19 @@ const Header = () => {
         }
     }
 
+    const handleLogout = () => {
+        logOut()
+            .then(() => {
+                Swal.fire({
+                    title: 'YAY!',
+                    text: 'Logged out Successfully.',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                })
+            })
+            .catch(error => console.log(error))
+    }
+
     return (
         <>
             <Login />
@@ -170,10 +184,10 @@ const Header = () => {
                                         user?.photoURL ?
                                             <>
                                                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                                                <img onClick={() => setOpen(true)} src={user.photoURL} alt='profile pic' className={`rounded-full hidden xl:block cursor-pointer w-[40px] h-[40px]`} />
+                                                <img onClick={handleLogout} src={user.photoURL} alt='profile pic' className={`rounded-full hidden xl:block cursor-pointer w-[40px] h-[40px]`} />
 
                                                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                                                <img onClick={() => setOpen(true)} src={user.photoURL} alt='profile pic' className={`w-[30px] h-[30px] xl:hidden  cursor-pointer rounded-full `} />
+                                                <img onClick={handleLogout} src={user.photoURL} alt='profile pic' className={`w-[30px] h-[30px] xl:hidden  cursor-pointer rounded-full `} />
                                             </>
                                             :
                                             <>
