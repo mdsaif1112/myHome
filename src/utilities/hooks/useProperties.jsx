@@ -10,7 +10,7 @@ const useProperties = () => {
         {
             queryKey: 'properties',
             queryFn: async () => {
-                const res = await axios('http://localhost:3000/api/properties')
+                const res = await axios('api/properties')
                 return res.data
             }
         }

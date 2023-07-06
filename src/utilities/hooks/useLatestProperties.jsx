@@ -4,8 +4,8 @@ import axios from 'axios';
 
 const useLatestProperties = () => {
 
-    const { data: properties = [], isLoading, refetch } = useQuery({
-        queryKey: ['properties'],
+    const { data: latestProperties = [], isLoading, refetch } = useQuery({
+        queryKey: ['latestProperties'],
         queryFn: async () => {
             const res = await axios('/api/latestProperties')
 
@@ -13,7 +13,7 @@ const useLatestProperties = () => {
         }
     })
 
-    return { properties, isLoading, refetch }
+    return { latestProperties, isLoading, refetch }
 };
 
 export default useLatestProperties;
