@@ -3,9 +3,9 @@ import connectDb from "../connectDb";
 import { useSearchParams } from "next/navigation";
 
 export const POST = async (req) => {
-  const data = await req.json();
-
   const client = await connectDb();
+
+  const data = await req.json();
   const userCollection = client.collection("users");
 
   const query = { email: data.email };
@@ -22,9 +22,9 @@ export const POST = async (req) => {
 };
 
 export const GET = async (req) => {
-  const { searchParams } = new URL(req.url);
-
   const client = await connectDb();
+
+  const { searchParams } = new URL(req.url);
   const userCollection = client.collection("users");
 
   const email = searchParams.get("email");
