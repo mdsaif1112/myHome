@@ -33,8 +33,6 @@ export const POST = async (req) => {
 
   const exist = await favoriteCollection.findOne(query);
 
-  console.log(query);
-
   if (exist) {
     return NextResponse.json({ exist: true });
   }
@@ -53,8 +51,6 @@ export const DELETE = async (req) => {
 
   const propertyId = searchParams.get("propertyId");
   const buyerEmail = searchParams.get("buyerEmail");
-
-  console.log(propertyId, buyerEmail);
 
   const query = {
     propertyId: propertyId,

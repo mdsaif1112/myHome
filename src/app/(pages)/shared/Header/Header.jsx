@@ -13,7 +13,7 @@ import Login from '../../(login)/Login';
 import Register from '../../(register)/Register';
 import { LoginContext } from '@/providers/LoginProvider';
 import { AuthContext } from '@/providers/AuthProvider';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
 
 const Header = () => {
@@ -30,6 +30,8 @@ const Header = () => {
     const pathname = usePathname()
 
     const otherPage = pathname !== '/'
+
+    const router = useRouter()
 
     useEffect(() => {
 
@@ -148,7 +150,7 @@ const Header = () => {
                             </div>
                             <div>
                                 <ButtonGroup variant="text" aria-label="text button group" className='header-btn-grp rounded-none'>
-                                    <Button className='flex gap-2 justify-between items-center' color='white'>
+                                    <Button onClick={() => router.push('/favorites')} className='flex gap-2 justify-between items-center' color='white'>
                                         <FaHeart /> <span className='capitalize'>Favorites</span>
                                     </Button>
                                     <Button className='flex gap-2 justify-between items-center' color='white'>
