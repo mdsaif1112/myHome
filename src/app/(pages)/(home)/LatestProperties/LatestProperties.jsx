@@ -8,16 +8,18 @@ import axios from 'axios';
 import React from 'react';
 
 
-export const getProperties = async () => {
-    const res = await axios('https://my-home-khaki-two.vercel.app/api/latestProperties')
-    return res.data
-}
+// export const getProperties = async () => {
+//     const res = await axios('api/latestProperties')
+//     return res.data
+// }
 
-const LatestProperties = async () => {
+const LatestProperties = () => {
 
-    // const { properties, refetch } = useLatestProperties()
+    const { properties, refetch } = useLatestProperties()
 
-    const properties = await getProperties()
+    // const properties = await getProperties()
+
+    console.log(properties);
 
     return (
         <section className='section'>

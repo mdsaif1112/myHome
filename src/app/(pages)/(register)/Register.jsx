@@ -43,7 +43,7 @@ const Register = () => {
 
                 updateNameAndPhoto(res.user, name, photo)
                     .then(() => {
-                        axios.post('https://my-home-khaki-two.vercel.app/api/users', { name,photo, email, userType })
+                        axios.post('api/users', { name,photo, email, userType })
                             .then(res => {
                                 if (res?.data?.insertedId) {
                                     reset()
