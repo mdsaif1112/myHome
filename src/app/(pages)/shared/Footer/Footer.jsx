@@ -18,7 +18,7 @@ const Footer = () => {
     return (
         <footer className='bg-[#001a33] py-24'>
             <div className="my-container">
-                <div className='grid grid-cols-3 justify-between items-start gap-8'>
+                <div className='grid grid-cols-3 justify-between items-start gap-12'>
                     <div>
                         <h3 className='text-white font-semibold'>Contact us</h3>
                         <div className='flex flex-col gap-5 mt-5'>
@@ -70,11 +70,19 @@ const Footer = () => {
                         <div className='flex flex-col gap-3 mt-5'>
                             {
                                 latestProperties.slice(0, 3).map(property => (
-                                    <div key={property._id}>
-                                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                                        <div><img src={property.photos[0]} alt='' className='w-[102px] h-[68px] rounded-md' /></div>
+                                    <div key={property._id} className='flex justify-start gap-3'>
                                         <div>
-                                            <h3>{property.title}</h3>
+
+                                            <Link href={'/'}>
+                                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                                <img src={property.photos[0]} alt='' className='w-[102px] h-[68px] rounded-md' />
+                                            </Link>
+                                        </div>
+                                        <div>
+                                            <Link href={'/'}>
+                                                <h3 className='text-white text-lg'>{property.title}</h3>
+                                            </Link>
+                                            <h6 className='text-white mt-2'>$ {property.price.toLocaleString()}</h6>
                                         </div>
                                     </div>
                                 ))
@@ -82,6 +90,9 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
+                <span className='text-[#bbbbbb] mt-16 block'>
+                    Copyright Jubayer Hossain. All Rights Reserved.
+                </span>
             </div>
         </footer>
     );
