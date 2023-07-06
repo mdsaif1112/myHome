@@ -99,6 +99,7 @@ const Header = () => {
 
     return (
         <>
+            <Login />
             <header className={`${scrolled ? 'xl:top-[-42px]' : ''} w-full duration-200 header sticky xl:-mb-[126px] top-0 left-0 bg-[#001a33] xl:bg-transparent z-50 `}>
                 <div className="header-container">
                     <div className={`border-b border-[#ffffff34]`}>

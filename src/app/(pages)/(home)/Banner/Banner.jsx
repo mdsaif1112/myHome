@@ -23,7 +23,6 @@ const Banner = () => {
                     </p>
                 </div>
             </div>
-            <Login />
         </section>
     );
 };

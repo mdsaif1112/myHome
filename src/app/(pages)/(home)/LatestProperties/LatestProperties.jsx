@@ -7,17 +7,9 @@ import useLatestProperties from '@/utilities/hooks/useLatestProperties';
 import axios from 'axios';
 import React from 'react';
 
-
-// export const getProperties = async () => {
-//     const res = await axios('api/latestProperties')
-//     return res.data
-// }
-
 const LatestProperties = () => {
 
     const { properties, refetch } = useLatestProperties()
-
-    // const properties = await getProperties()
 
     console.log(properties);
 
