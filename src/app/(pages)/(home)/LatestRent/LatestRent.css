@@ -1,0 +1,11 @@
+.swiper-pagination {
+  @apply mt-10;
+}
+
+.swiper-button-prev {
+  @apply mr-10;
+}
+
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.single-property.relative.css-bhp9pd-MuiPaper-root-MuiCard-root {
+  box-shadow: none;
+}

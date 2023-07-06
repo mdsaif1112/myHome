@@ -6,8 +6,10 @@ export const GET = async () => {
 
   const propertyCollection = clientPromise.collection("properties");
 
+  const query = { listed_in: "Rent" || "rent" };
+
   const result = await propertyCollection
-    .find()
+    .find(query)
     .sort({ available_from: -1 })
     .skip(0)
     .limit(6)

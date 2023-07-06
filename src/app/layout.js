@@ -9,6 +9,7 @@ import AuthProvider from "@/providers/AuthProvider";
 import LoginProvider from "@/providers/LoginProvider";
 import { Login } from "@mui/icons-material";
 import Register from "./(pages)/(register)/Register";
+import Footer from "./(pages)/shared/Footer/Footer";
 
 const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"] });
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
               >
                 <Header />
                 {children}
+                <Footer />
                 <Login />
                 <Register />
               </body>
