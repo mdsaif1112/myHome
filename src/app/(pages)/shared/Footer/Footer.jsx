@@ -1,4 +1,6 @@
+import useLatestProperties from '@/utilities/hooks/useLatestProperties';
 import useProperties from '@/utilities/hooks/useProperties';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { FaFacebookF, FaGoogle, FaLaptop, FaLinkedinIn, FaMapMarkerAlt, FaPhone, FaRegEnvelope, FaTwitter } from 'react-icons/fa';
@@ -6,6 +8,8 @@ import { FaFacebookF, FaGoogle, FaLaptop, FaLinkedinIn, FaMapMarkerAlt, FaPhone,
 const Footer = () => {
 
     const { properties } = useProperties()
+
+    const { latestProperties } = useLatestProperties()
 
     const categories = Array.from(new Set(properties?.map((property) => property.category)));
 
@@ -63,8 +67,18 @@ const Footer = () => {
                     </div>
                     <div>
                         <h3 className='text-white font-semibold'>Latest Properties</h3>
-                        <div>
-                            
+                        <div className='flex flex-col gap-3 mt-5'>
+                            {
+                                latestProperties.slice(0, 3).map(property => (
+                                    <div key={property._id}>
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                        <div><img src={property.photos[0]} alt='' className='w-[102px] h-[68px] rounded-md' /></div>
+                                        <div>
+                                            <h3>{property.title}</h3>
+                                        </div>
+                                    </div>
+                                ))
+                            }
                         </div>
                     </div>
                 </div>
