@@ -13,6 +13,7 @@ import Login from '../../(login)/Login';
 import Register from '../../(register)/Register';
 import { LoginContext } from '@/providers/LoginProvider';
 import { AuthContext } from '@/providers/AuthProvider';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
 
@@ -24,6 +25,10 @@ const Header = () => {
     const [rightDrawer, setRightDrawer] = useState(false)
 
     const [scrolled, setScrolled] = useState(0)
+
+    const pathname = usePathname()
+
+    const otherPage = pathname !== '/'
 
     useEffect(() => {
 
@@ -75,6 +80,13 @@ const Header = () => {
                     Contact Us
                 </ActiveLink>
             </li>
+
+            {/* TODO: Should be dynamic */}
+            <li>
+                <ActiveLink className='header-li' href={'/dashboard'}>
+                    Dashboard
+                </ActiveLink>
+            </li>
         </>
     )
 
@@ -87,10 +99,10 @@ const Header = () => {
 
     return (
         <>
-            <header className={`${scrolled ? 'xl:top-[-42px]' : ''} w-full duration-200 header sticky xl:-mb-[126px] top-0 left-0 bg-[#001a33] xl:bg-transparent z-50`}>
+            <header className={`${scrolled ? 'xl:top-[-42px]' : ''} w-full duration-200 header sticky xl:-mb-[126px] top-0 left-0 bg-[#001a33] xl:bg-transparent z-50 `}>
                 <div className="header-container">
                     <div className={`border-b border-[#ffffff34]`}>
-                        <div className="my-container header-top hidden xl:flex justify-between items-center ">
+                        <div className={`${otherPage ? 'bg-[#001A33] px-10' : 'my-container'} header-top hidden xl:flex justify-between items-center `}>
                             <div>
                                 <ButtonGroup variant="text" aria-label="text button group" className='header-btn-grp rounded-none'>
                                     <Button color='white'>
@@ -134,11 +146,11 @@ const Header = () => {
                             </div>
                         </div>
                     </div>
-                    <div className={`${scrolled > 100 ? 'header-scrolled' : ''}`}>
-                        <div className="my-container header-bottom py-5 grid grid-cols-12 justify-between items-center">
+                    <div className={`${((scrolled > 100) || otherPage) ? 'header-scrolled' : ''}`}>
+                        <div className={`${otherPage ? 'px-10' : 'my-container'} header-bottom py-5 grid grid-cols-12 justify-between items-center`}>
                             <div className='col-span-3'>
                                 <Link href={'/'} className='hidden xl:block'>
-                                    <Image src={scrolled > 100 ? logo.src : logoWhite.src} alt='' loading='lazy' width={120} height={0} />
+                                    <Image src={((scrolled > 100) || otherPage) ? logo.src : logoWhite.src} alt='' loading='lazy' width={120} height={0} />
                                 </Link>
                                 <FaBars onClick={toggleLeftDrawer(true)} className={`${scrolled > 100 ? 'text-black' : 'text-white'} text-[30px] cursor-pointer xl:hidden`} />
                             </div>

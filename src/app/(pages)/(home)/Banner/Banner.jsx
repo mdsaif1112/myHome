@@ -3,9 +3,13 @@
 import React from 'react';
 import bannerBg from '@/assets/images/wpresidece-header.jpg'
 import Login from '../../(login)/Login';
-import Register from '../../(register)/Register';
+import useUserType from '@/utilities/hooks/useUserType';
 
-const Banner = async () => {
+const Banner = () => {
+
+    const { userType } = useUserType()
+
+    console.log(userType);
 
     return (
         <section style={{ backgroundImage: `url(${bannerBg.src})` }} className='w-full h-[500px] xl:h-[700px] bg-center'>

@@ -28,10 +28,12 @@ export const POST = async (req) => {
 
   const query = {
     propertyId: reqData.propertyId,
-    userEmail: reqData.userEmail,
+    buyerEmail: reqData.buyerEmail,
   };
 
   const exist = await favoriteCollection.findOne(query);
+
+  console.log(query);
 
   if (exist) {
     return NextResponse.json({ exist: true });
@@ -55,8 +57,8 @@ export const DELETE = async (req) => {
   console.log(propertyId, buyerEmail);
 
   const query = {
-    propertyId,
-    buyerEmail,
+    propertyId: propertyId,
+    buyerEmail: buyerEmail,
   };
 
   const result = await favoriteCollection.deleteOne(query);

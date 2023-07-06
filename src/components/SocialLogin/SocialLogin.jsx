@@ -13,7 +13,7 @@ const SocialLogin = ({ className }) => {
     const handleGoogleLogin = () => {
         googleLogin()
             .then(res => {
-                axios.post('https://my-home-khaki-two.vercel.app/api/users', { name: res.user.displayName, email: res.user.email, userType: 'buyer' })
+                axios.post('https://my-home-khaki-two.vercel.app/api/users', { name: res.user.displayName, photo: res.user.photoURL, email: res.user.email, userType: 'buyer' })
                     .then(res => {
                         console.log(res?.data);
                         if (res?.data?.insertedId || res?.data?.exist) {

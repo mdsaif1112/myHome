@@ -58,7 +58,7 @@ const SingleProperty = ({ property }) => {
             buyerEmail: user?.email
         }
 
-        const res = await axios.post('https://my-home-khaki-two.vercel.app/api/favorites', favoriteProperty)
+        const res = await axios.post('http://localhost:3000/api/favorites', favoriteProperty)
         const data = await res.data
 
         if (data.insertedId) {
