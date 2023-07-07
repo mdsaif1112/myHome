@@ -5,9 +5,9 @@ import SingleProperty from '@/components/SingleProperty/SingleProperty';
 import useFavorites from '@/utilities/hooks/useFavorites';
 import React, { useContext } from 'react';
 import Banner from '../../shared/Banner/Banner';
-import { useRouter } from 'next/router';
 import { LoginContext } from '@/providers/LoginProvider';
 import { AuthContext } from '@/providers/AuthProvider';
+import { useRouter } from 'next/navigation';
 
 const Favorites = () => {
 
