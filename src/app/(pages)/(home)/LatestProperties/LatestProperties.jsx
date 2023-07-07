@@ -10,7 +10,7 @@ const LatestProperties = () => {
 
     const { latestProperties, refetch } = useLatestProperties()
 
-    console.log(latestProperties);
+    // console.log(latestProperties);
 
     return (
         <section className='section'>

@@ -18,7 +18,7 @@ import useLatestRents from '@/utilities/hooks/useLatestRents';
 const LatestRent = () => {
     const { rents, refetch } = useLatestRents()
 
-    console.log(rents);
+    // console.log(rents);
 
     return (
         <section className='section'>

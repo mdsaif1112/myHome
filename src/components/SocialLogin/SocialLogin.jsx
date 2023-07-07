@@ -15,7 +15,6 @@ const SocialLogin = ({ className }) => {
             .then(res => {
                 axios.post('api/users', { name: res.user.displayName, photo: res.user.photoURL, email: res.user.email, userType: 'buyer' })
                     .then(res => {
-                        console.log(res?.data);
                         if (res?.data?.insertedId || res?.data?.exist) {
                             setOpen(false)
                             setRegisterOpen(false)

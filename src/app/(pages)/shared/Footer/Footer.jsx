@@ -13,7 +13,7 @@ const Footer = () => {
 
     const categories = Array.from(new Set(properties?.map((property) => property.category)));
 
-    console.log(categories);
+    // console.log(categories);
 
     return (
         <footer className='bg-[#001a33] py-24'>
