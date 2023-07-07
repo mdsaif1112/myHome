@@ -15,6 +15,7 @@ import { LoginContext } from '@/providers/LoginProvider';
 import { AuthContext } from '@/providers/AuthProvider';
 import { usePathname, useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
+import useUserType from '@/utilities/hooks/useUserType';
 
 const Header = () => {
 
@@ -31,7 +32,12 @@ const Header = () => {
 
     const otherPage = pathname !== '/'
 
+
     const router = useRouter()
+
+    const { userType } = useUserType()
+
+    console.log(userType);
 
     useEffect(() => {
 
@@ -89,12 +95,13 @@ const Header = () => {
                 </ActiveLink>
             </li>
 
-            {/* TODO: Should be dynamic */}
-            <li>
-                <ActiveLink className='header-li' href={'/dashboard'}>
-                    Dashboard
-                </ActiveLink>
-            </li>
+            {
+                userType === 'admin' && <li>
+                    <ActiveLink className='header-li' href={'/adminDashboard'}>
+                        Dashboard
+                    </ActiveLink>
+                </li>
+            }
         </>
     )
 
@@ -116,6 +123,17 @@ const Header = () => {
                 })
             })
             .catch(error => console.log(error))
+    }
+
+
+    const navigateTo = (route) => {
+
+        if (!user) {
+            setOpen(true)
+            return
+        }
+
+        router.push(route)
     }
 
     return (
@@ -155,7 +173,7 @@ const Header = () => {
                             </div>
                             <div>
                                 <ButtonGroup variant="text" aria-label="text button group" className='header-btn-grp rounded-none'>
-                                    <Button onClick={() => router.push('/favorites')} className='flex gap-2 justify-between items-center' color='white'>
+                                    <Button onClick={() => navigateTo('/favorites')} className='flex gap-2 justify-between items-center' color='white'>
                                         <FaHeart /> <span className='capitalize'>Favorites</span>
                                     </Button>
                                     <Button className='flex gap-2 justify-between items-center' color='white'>

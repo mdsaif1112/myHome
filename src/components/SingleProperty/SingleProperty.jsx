@@ -66,15 +66,7 @@ const SingleProperty = ({ property }) => {
         const data = await res.data
 
         if (data.insertedId) {
-            Swal.fire({
-                title: 'YAY!',
-                text: 'Added Successfully.',
-                icon: 'success',
-                confirmButtonText: 'Cool'
-            })
-                .then(() => {
-                    setFavorite(true)
-                })
+            setFavorite(true)
         }
 
 

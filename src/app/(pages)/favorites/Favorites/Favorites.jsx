@@ -1,7 +1,6 @@
 "use client"
 
 import Loader from '@/components/Loader/Loader';
-import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import SingleProperty from '@/components/SingleProperty/SingleProperty';
 import useFavorites from '@/utilities/hooks/useFavorites';
 import React from 'react';
@@ -10,7 +9,7 @@ import Banner from '../../shared/Banner/Banner';
 const Favorites = () => {
 
 
-    const { myFavorites } = useFavorites()
+    const { myFavorites, isLoading } = useFavorites()
 
     return (
         <>
@@ -20,7 +19,7 @@ const Favorites = () => {
 
                     {
                         myFavorites.length === 0 ?
-                            <Loader />
+                            <div className='text-center text-3xl'>Please add first</div>
                             :
                             <div className='grid grid-cols-1 xl:grid-cols-3 gap-8 mt-12'>
                                 {
