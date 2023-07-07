@@ -1,26 +1,16 @@
-"use client";
-
-import Loader from "@/components/Loader/Loader";
-import useUserType from "@/utilities/hooks/useUserType";
-import { useRouter } from "next/navigation";
 import React, { useContext } from "react";
+import AdminDashboard from "./AdminDashboard/AdminDashboard";
+
+export const metadata = {
+  title: "Admin - My Home",
+};
 
 const page = () => {
-  const { userType, isLoading } = useUserType();
-
-  const router = useRouter();
-
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (userType !== "admin") {
-    router.push("/");
-
-    return;
-  }
-
-  return <div>Dashboard</div>;
+  return (
+    <>
+      <AdminDashboard />
+    </>
+  );
 };
 
 export default page;

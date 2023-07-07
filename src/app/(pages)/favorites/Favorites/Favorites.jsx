@@ -3,13 +3,33 @@
 import Loader from '@/components/Loader/Loader';
 import SingleProperty from '@/components/SingleProperty/SingleProperty';
 import useFavorites from '@/utilities/hooks/useFavorites';
-import React from 'react';
+import React, { useContext } from 'react';
 import Banner from '../../shared/Banner/Banner';
+import { useRouter } from 'next/router';
+import { LoginContext } from '@/providers/LoginProvider';
+import { AuthContext } from '@/providers/AuthProvider';
 
 const Favorites = () => {
 
 
     const { myFavorites, isLoading } = useFavorites()
+
+    const { user, loading } = useContext(AuthContext);
+
+    const { setOpen } = useContext(LoginContext);
+
+    const router = useRouter();
+
+    if (loading) {
+        return <Loader />;
+    }
+
+    if (!user) {
+        setOpen(true);
+
+        router.push("/");
+        return;
+    }
 
     return (
         <>

@@ -14,8 +14,8 @@ const useUserType = () => {
     const { data: userType = '', isLoading, refetch } = useQuery({
         queryKey: ['userType', email],
         queryFn: async () => {
-            if (user) {
-                const res = await axios('http://localhost:3000/api/users', {
+            if (email) {
+                const res = await axios('api/users', {
                     params: { email: email }
                 })
 

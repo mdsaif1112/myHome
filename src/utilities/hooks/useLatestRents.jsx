@@ -7,7 +7,7 @@ const useLatestRents = () => {
     const { data: rents = [], isLoading, refetch } = useQuery({
         queryKey: ['rents'],
         queryFn: async () => {
-            const res = await axios('/api/latestRents')
+            const res = await axios('api/latestRents')
             return res.data
         }
     })
