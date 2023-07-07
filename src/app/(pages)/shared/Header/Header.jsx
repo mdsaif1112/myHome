@@ -83,6 +83,11 @@ const Header = () => {
                     Contact Us
                 </ActiveLink>
             </li>
+            <li className='xl:hidden'>
+                <ActiveLink className='header-li' href={'/favorites'}>
+                    Favorites
+                </ActiveLink>
+            </li>
 
             {/* TODO: Should be dynamic */}
             <li>
@@ -169,11 +174,12 @@ const Header = () => {
                                 <Link href={'/'} className='hidden xl:block'>
                                     <Image src={((scrolled > 100) || otherPage) ? logo.src : logoWhite.src} alt='' loading='lazy' width={120} height={0} />
                                 </Link>
-                                <FaBars onClick={toggleLeftDrawer(true)} className={`${scrolled > 100 ? 'text-black' : 'text-white'} text-[30px] cursor-pointer xl:hidden`} />
+                                <FaBars onClick={toggleLeftDrawer(true)} className={`${scrolled > 100 ? 'text-black' : otherPage ? 'text-black' : 'text-white'} text-[30px] cursor-pointer xl:hidden`} />
                             </div>
                             <div className='col-span-6'>
                                 <Link href={'/'} className='xl:hidden flex justify-center items-center'>
-                                    <Image src={scrolled > 100 ? logo.src : logoWhite.src} alt='' loading='lazy' width={120} height={0} />
+                                    <Image className='hidden xl:block' src={scrolled > 100 ? logo.src : logoWhite.src} alt='' loading='lazy' width={120} height={0} />
+                                    <Image className='xl:hidden' src={otherPage ? logo.src : (scrolled > 100) ? logo.src : logoWhite.src} alt='' loading='lazy' width={120} height={0} />
                                 </Link>
                                 <ul className='header-ul hidden xl:flex justify-center items-center gap-2 text-white'>
                                     {menu}

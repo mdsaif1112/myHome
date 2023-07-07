@@ -10,7 +10,7 @@ const Banner = ({title, desc}) => {
     return (
         <section style={{ backgroundImage: `url(${bannerBg.src})` }} className='w-full h-[500px] xl:h-[700px] bg-center'>
             <div className='w-full h-full bg-gradient-to-b from-[#053a63b8] to-[#01111Bb8]' >
-                <div className='my-container flex justify-start xl:justify-center items-center flex-col h-full pt-16 xl:pt-0'>
+                <div className='my-container flex justify-center items-center flex-col h-full  xl:pt-0'>
                     <h1 className='text-[30px] xl:text-[50px] font-semibold text-white mb-5 px-14 xl:px-0 text-center'>
                         {title}
                     </h1>
