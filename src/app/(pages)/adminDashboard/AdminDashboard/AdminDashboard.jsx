@@ -31,7 +31,6 @@ const AdminDashboard = () => {
 
     if ((userType !== "admin") && (userType !== '')) {
 
-        console.log(userType);
         return router.push("/");
     }
 

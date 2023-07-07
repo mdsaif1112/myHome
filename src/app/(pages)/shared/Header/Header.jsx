@@ -37,8 +37,6 @@ const Header = () => {
 
     const { userType } = useUserType()
 
-    console.log(userType);
-
     useEffect(() => {
 
         let scrolledY = window.scrollY

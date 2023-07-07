@@ -1,6 +1,6 @@
-import useProperties from "@/utilities/hooks/useProperties";
+
 import React from "react";
-import Properties from "../shared/Properties/Properties";
+import PropertiesPage from "./PropertiesPage/PropertiesPage";
 
 export const metadata = {
   title: "Properties - My Home",
@@ -9,7 +9,7 @@ export const metadata = {
 const page = () => {
   return (
     <>
-      <Properties />
+      <PropertiesPage />
     </>
   );
 };
