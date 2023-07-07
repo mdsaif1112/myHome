@@ -1,3 +1,5 @@
+"use client"
+
 import Register from '@/app/(pages)/(register)/Register';
 import { Login } from '@mui/icons-material';
 import React, { createContext, useState } from 'react';
