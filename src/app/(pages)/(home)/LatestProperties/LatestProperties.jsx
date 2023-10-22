@@ -2,7 +2,7 @@
 
 import Loader from '@/components/Loader/Loader';
 import SectionTitle from '@/components/SectionTitle/SectionTitle';
-import SingleProperty from '@/components/SingleProperty/SingleProperty';
+import PropertyCard from '@/components/PropertyCard/PropertyCard';
 import useLatestProperties from '@/utilities/hooks/useLatestProperties';
 import React from 'react';
 
@@ -23,7 +23,7 @@ const LatestProperties = () => {
                         :
                         <div className='grid grid-cols-1 xl:grid-cols-3 gap-8 mt-12'>
                             {
-                                latestProperties?.map(property => <SingleProperty key={property._id} property={property} />)
+                                latestProperties?.map(property => <PropertyCard key={property._id} property={property} />)
                             }
                         </div>
                 }

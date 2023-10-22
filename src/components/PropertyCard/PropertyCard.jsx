@@ -9,7 +9,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { FaBath, FaBed, FaExpand, FaHeart, FaMapMarkerAlt, FaRegHeart } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
-const SingleProperty = ({ property }) => {
+const PropertyCard = ({ property }) => {
 
     const { setOpen } = useContext(LoginContext)
 
@@ -183,4 +183,4 @@ const SingleProperty = ({ property }) => {
     );
 };
 
-export default SingleProperty;
+export default PropertyCard;

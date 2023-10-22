@@ -1,7 +1,7 @@
 "use client"
 
 import Loader from '@/components/Loader/Loader';
-import SingleProperty from '@/components/SingleProperty/SingleProperty';
+import PropertyCard from '@/components/PropertyCard/PropertyCard';
 import useFavorites from '@/utilities/hooks/useFavorites';
 import React, { useContext } from 'react';
 import Banner from '../../shared/Banner/Banner';
@@ -43,7 +43,7 @@ const Favorites = () => {
                             :
                             <div className='grid grid-cols-1 xl:grid-cols-3 gap-8 mt-12'>
                                 {
-                                    myFavorites?.map(property => <SingleProperty key={property._id} property={property} />)
+                                    myFavorites?.map(property => <PropertyCard key={property._id} property={property} />)
                                 }
                             </div>
                     }

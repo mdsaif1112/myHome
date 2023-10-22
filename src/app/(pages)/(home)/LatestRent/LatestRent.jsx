@@ -2,7 +2,7 @@
 
 import Loader from '@/components/Loader/Loader';
 import SectionTitle from '@/components/SectionTitle/SectionTitle';
-import SingleProperty from '@/components/SingleProperty/SingleProperty';
+import PropertyCard from '@/components/PropertyCard/PropertyCard';
 import useLatestProperties from '@/utilities/hooks/useLatestProperties';
 import React from 'react';
 import './LatestRent.css'
@@ -43,7 +43,7 @@ const LatestRent = () => {
                                 {
                                     rents?.map(rent => <SwiperSlide key={rent._id}>
                                         <div className='py-10 px-5'>
-                                            <SingleProperty property={rent} />
+                                            <PropertyCard property={rent} />
                                         </div>
                                     </SwiperSlide>)
                                 }
